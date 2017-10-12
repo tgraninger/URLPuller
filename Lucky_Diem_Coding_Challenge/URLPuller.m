@@ -33,7 +33,7 @@
 				NSString *encryptedFileName = [self downloadedPathForUrl:url];
 				NSData *fileData = [NSData dataWithContentsOfURL:location];
 				NSString *filePath = [NSString stringWithFormat:@"%@/%@.%@", directory, encryptedFileName, @"downloaded"];
-				[fileData writeToFile:filePath atomically:YES];
+				[fileData writeToFile:filePath atomically:YES];	// We want this to be atomic for thread safety.
 			}
 			
 			dispatch_group_leave(group);
